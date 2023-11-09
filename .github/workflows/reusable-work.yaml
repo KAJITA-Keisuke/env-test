@@ -1,0 +1,12 @@
+on:
+  workflow_call:
+    inputs:
+      env:
+        type: string
+
+jobs:
+  call:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "workflow ${{ inputs.env }}."

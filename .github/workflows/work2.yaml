@@ -1,0 +1,10 @@
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  choices:
+    uses: ./.github/workflows/reusable-work.yaml
+    with:
+      env: work2
