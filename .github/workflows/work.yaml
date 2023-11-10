@@ -11,12 +11,3 @@ jobs:
       env: work2
     secrets:
       PAT: ${{ secrets.PAT }}
-  post-work:
-    needs: work
-    runs-on: ubuntu-latest
-    permissions:
-      actions: write
-      contents: write
-    steps:
-      - run: |
-          echo "post work."
