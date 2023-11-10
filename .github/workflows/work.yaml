@@ -4,8 +4,13 @@ on:
       - main
 
 jobs:
-  choices:
+  work:
+    uses: ./.github/workflows/reusable-work.yaml
+    with:
+      env: work2
+  post-work:
+    needs: work
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "workflow."
+          echo "post work."
