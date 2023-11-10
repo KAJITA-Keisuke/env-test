@@ -12,6 +12,8 @@ jobs:
   post-work:
     needs: work
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - run: |
           echo "post work."
