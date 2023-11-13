@@ -27,6 +27,7 @@ jobs:
       - name: dispatch workflow
         uses: actions/github-script@v6
         with:
+          debug: true
           github-token: ${{ secrets.PAT }}
           script: |
             github.rest.actions.createWorkflowDispatch({
