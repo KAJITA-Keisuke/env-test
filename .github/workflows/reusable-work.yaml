@@ -16,7 +16,6 @@ jobs:
   pre:
     runs-on: ubuntu-latest
     environment: ${{ inputs.gh-env }}
-    if: ${{ github.event.pull_request.merged }}
     steps:
       - name: pre work
         run: |
