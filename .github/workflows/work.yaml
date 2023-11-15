@@ -2,12 +2,37 @@ on:
   pull_request:
     branches:
       - main
+      - staging
+      - develop
     types: [opened, synchronize, reopened, closed]
 
 jobs:
+  decide-env:
+    name: decide environment
+    runs-on: ubuntu-latest
+    outputs:
+      environment: ${{ steps.decide.outputs.env }}
+    steps:
+      - id: decide
+        run: |
+          ref="${{ github.base_ref }}"
+          if [ $ref = 'main' ]; then
+            echo "env=production" >> $GITHUB_OUTPUT
+          elif [ $ref = 'staging' ]; then
+            :
+          elif [ $ref = 'develop' ];then
+            echo "env=develop" >> $GITHUB_OUTPUT
+          else
+            :
+          fi
   work:
+    name: work by ${{ needs.decide-env.outputs.environment }}
+    needs: decide-env
+    if: ${{ needs.decide-env.outputs.environment != '' }}
+    environment: ${{ needs.decide-env.outputs.environment }}
     uses: ./.github/workflows/reusable-work.yaml
     with:
-      env: work2
+      env: ${{ vars.ENV }}
+      tag: ${{ secrets.TAG }}
     secrets:
       PAT: ${{ secrets.PAT }}

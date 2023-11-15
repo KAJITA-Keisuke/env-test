@@ -7,6 +7,9 @@ on:
         type: string
         required: false
         default: ${{ github.base_ref }}
+      tag:
+        type: string
+        required: true
     secrets:
       PAT:
         required: true
@@ -19,6 +22,7 @@ jobs:
       - name: pre work
         run: |
           echo "workflow ${{ inputs.env }}."
+          echo "tag: ${{ inputs.tag }}"
 
   work:
     runs-on: ubuntu-latest
