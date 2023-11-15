@@ -1,13 +1,11 @@
 on:
   workflow_call:
     inputs:
-      env:
-        type: string
       branch:
         type: string
         required: false
         default: ${{ github.base_ref }}
-      tag:
+      gh-env:
         type: string
         required: true
     secrets:
@@ -17,15 +15,17 @@ on:
 jobs:
   pre:
     runs-on: ubuntu-latest
+    environment: ${{ inputs.gh-env }}
     if: ${{ github.event.pull_request.merged }}
     steps:
       - name: pre work
         run: |
-          echo "workflow ${{ inputs.env }}."
-          echo "tag: ${{ inputs.tag }}"
+          echo "workflow ${{ vars.ENV }}."
+          echo "tag: ${{ secrets.TAG }}"
 
   work:
     runs-on: ubuntu-latest
+    if: ${{ false }}
     needs: pre
     steps:
       - name: dispatch workflow

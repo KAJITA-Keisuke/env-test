@@ -26,13 +26,11 @@ jobs:
             :
           fi
   work:
-    name: work by ${{ needs.decide-env.outputs.environment }}
+    name: ${{ needs.decide-env.outputs.environment }}
     needs: decide-env
     if: ${{ needs.decide-env.outputs.environment != '' }}
-    environment: ${{ needs.decide-env.outputs.environment }}
     uses: ./.github/workflows/reusable-work.yaml
     with:
-      env: ${{ vars.ENV }}
-      tag: ${{ secrets.TAG }}
+      gh-env: ${{ needs.decide-env.outputs.environment }}
     secrets:
       PAT: ${{ secrets.PAT }}
