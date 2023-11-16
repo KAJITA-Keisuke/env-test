@@ -27,6 +27,7 @@ jobs:
     needs: pre
     permissions:
       actions: write
+      contents: write
     steps:
       - name: dispatch workflow
         uses: actions/github-script@v6
