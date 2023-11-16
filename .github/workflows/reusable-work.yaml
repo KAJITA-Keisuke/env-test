@@ -24,14 +24,14 @@ jobs:
 
   work:
     runs-on: ubuntu-latest
-    if: ${{ false }}
     needs: pre
+    permissions:
+      actions: write
     steps:
       - name: dispatch workflow
         uses: actions/github-script@v6
         with:
           debug: true
-          github-token: ${{ secrets.PAT }}
           script: |
             github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
