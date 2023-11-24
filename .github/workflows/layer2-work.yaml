@@ -1,0 +1,16 @@
+on:
+  workflow_call:
+    inputs:
+      gh-env:
+        required: true
+        type: string
+
+jobs:
+  work:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.gh-env }}
+    steps:
+      - name: check
+        run: |
+          echo tag "${{ secrets.TAG }}" | sed 's/./& /g'
+          echo role "${{ secrets.ROLE }}" | sed 's/./& /g'
