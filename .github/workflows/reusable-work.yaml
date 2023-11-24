@@ -13,6 +13,8 @@ on:
         required: true
       TAG:
         required: true
+      ROLE:
+        required: true
 
 jobs:
   pre:
