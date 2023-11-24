@@ -32,7 +32,4 @@ jobs:
     uses: ./.github/workflows/reusable-work.yaml
     with:
       gh-env: ${{ needs.decide-env.outputs.environment }}
-    secrets:
-      PAT: ${{ secrets.PAT }}
-      TAG: ${{ secrets.TAG }}
-      ROLE: ${{ secrets.ROLE }}
+    secrets: inherit
