@@ -35,3 +35,4 @@ jobs:
     secrets:
       PAT: ${{ secrets.PAT }}
       TAG: ${{ secrets.TAG }}
+      ROLE: ${{ secrets.ROLE }}
