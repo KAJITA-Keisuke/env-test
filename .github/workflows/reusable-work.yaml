@@ -24,9 +24,16 @@ jobs:
           echo "workflow ${{ vars.ENV }}."
           echo "tag: ${{ secrets.TAG }}"
 
+  layer-2:
+    uses: ./.github/workflows/layer2-work.yaml
+    with:
+      gh-env: ${{ inputs.gh-env }}
+    secrets: inherit
+    
   work:
     runs-on: ubuntu-latest
     needs: pre
+    if: false
     steps:
       - name: dispatch workflow
         uses: actions/github-script@v6
