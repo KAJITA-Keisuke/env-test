@@ -34,3 +34,4 @@ jobs:
       gh-env: ${{ needs.decide-env.outputs.environment }}
     secrets:
       PAT: ${{ secrets.PAT }}
+      TAG: ${{ secrets.TAG }}

@@ -11,6 +11,8 @@ on:
     secrets:
       PAT:
         required: true
+      TAG:
+        required: true
 
 jobs:
   pre:
