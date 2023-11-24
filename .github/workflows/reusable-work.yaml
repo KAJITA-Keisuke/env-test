@@ -8,13 +8,6 @@ on:
       gh-env:
         type: string
         required: true
-    secrets:
-      PAT:
-        required: true
-      TAG:
-        required: true
-      ROLE:
-        required: true
 
 jobs:
   pre:
