@@ -11,13 +11,14 @@ on:
 
 jobs:
   pre:
-    runs-on: ${{ vars.RUNNER }}
+    runs-on: ubuntu-latest
     environment: ${{ inputs.gh-env }}
     steps:
       - name: pre work
         run: |
           echo "workflow ${{ vars.ENV }}."
           echo "tag: ${{ secrets.TAG }}"
+          echo "runner: ${{ vars.RUNNER }}"
 
   layer-2:
     uses: ./.github/workflows/layer2-work.yaml
