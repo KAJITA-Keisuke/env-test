@@ -18,6 +18,7 @@ jobs:
         run: |
           echo "workflow ${{ vars.ENV }}."
           echo "tag: ${{ secrets.TAG }}"
+          echo "runner: ${{ vars.RUNNER }}"
 
   layer-2:
     uses: ./.github/workflows/layer2-work.yaml
